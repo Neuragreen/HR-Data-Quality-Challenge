@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.env.*
+.DS_Store
+/datasets/
+/analysis_outputs/
+/.ui_runs/
+/outputs/
+/evaluation/
+/artifacts/
+/ui/screenshots/
+*.csv
+*.jsonl
+*.log
+*.pem
+*.key
+
+# Explicit synthetic submission predictions only
+!/submission/issues_development_synthetic.csv
+!/submission/issues_validation_synthetic.csv

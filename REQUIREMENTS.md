@@ -1,0 +1,36 @@
+# Prototype acceptance map
+
+This checklist covers **What to Build**, including both optional features. It describes the implemented prototype, not production certification or official challenge accuracy.
+
+| Requirement | Working behaviour | Where to verify |
+| --- | --- | --- |
+| Connect several differently formatted sources | Four local CSV adapters use source-specific headers, IDs, date formats, code mappings and lifecycle meanings. Upload all four synthetic extracts and run analysis from the browser. Raw observations and schema diagnostics are retained. | Sources & analysis; `test_identity_core.py`, `test_web_core.py` |
+| Demonstrate adding another source | A fifth synthetic benefits system uses new headers, IDs, dates and code translations through configuration. Dynamic upload fields, cards, source filters, matching, proposed values, abstention, impact and CSV export are exercised. | Sources & analysis → Five-source onboarding demo; `docs/SOURCE_ONBOARDING.md`; `test_onboarding.py` |
+| Ingest the supplied reference files | Import both Markdown files directly; preview mappings, required fields, valid codes and downstream paths with line evidence. Review binds the selected files and base policy. Unsupported declarations block import; original files and hashes are retained. Imported rules drive detection and exposure ranking. | Sources & analysis → Reference files; `docs/REFERENCE_IMPORT.md`; reference and web tests |
+| Match the same employee despite differing IDs/names/formats | Corroborated email/name/date-of-birth evidence, blocked candidates, contradiction checks, employment-aware grouping and explicit ambiguous states. No numeric-ID suffix joins. | Employee matching; `test_identity_core.py` |
+| Detect duplicates | Repeated source identifiers and matched duplicate profiles under different identifiers, within a declared profile grain. Concurrent jobs, assignment history and multiple access accounts are preserved. Unsupported merge/delete decisions require investigation. | Issue queue → Duplicate identifier / Duplicate profile; `test_requirements_core.py` |
+| Detect conflicts | Comparable fields are checked against valid authority for the same employment, respecting source lag. Employment, payroll and directory statuses retain separate meanings. | Issue queue → Conflicting values; `test_determination.py` |
+| Detect missing, invalid and out-of-date values | Required cells, code lists, strict dates, contradictory periods and configurable record age. Missing required columns become source diagnostics, not thousands of fabricated cell issues. Age alone does not establish a replacement. | Issue category filters and source diagnostics; ingestion/pipeline/determination tests |
+| Explain each finding and suggest a supported value | Original and normalized observations, plain-language rule, source references, matching evidence, authority, policy version and proposed value. Missing/invalid/ambiguous authority produces investigation instead of a guessed fix. | Finding → Evidence; `test_pipeline_core.py`, `test_determination.py` |
+| Rank by business impact | Visible severity and dependency weights plus measured changes to headcount, access exceptions and payroll reconciliation. Investigation-only findings retain business severity. Scores are capped at 100. | Queue → Priority & effect; finding → Why this priority; `test_requirements_core.py` |
+| Show systems and reports affected before fixing | Isolated single-patch scenarios show numerical before/after/deltas, contributor changes and uncertainty for three executable reports. Declared downstream exposure and uncovered behaviour are labelled separately. Identity changes need a separate review. | Finding → Impact preview; scenario and requirement tests |
+| Field or report trust score (optional) | Fields show validity, issue-free fraction and required-field completeness, with a formula. Reports show evidence-coverage score, population, unresolved cases and readiness. Optional unobserved fields, missing inputs and empty report populations have no invented score. | Reports & data trust; `test_requirements_core.py` |
+| Plain-language question with source attribution (optional) | Three explicitly supported question meanings: active employees in Dubai, leavers with enabled accounts, payroll profiles with conflicts. Answers show sources, definition, reference date, uncertainty and readiness. Unsupported meanings are rejected. No AI or RAG is required. | Reports → Ask about these reports; web/requirement tests |
+| Human approval and audit | A reviewer inspects the preview, then approves, rejects or requests investigation with a rationale. Decisions are hash chained locally against snapshot and policy. Approval never applies a correction. | Review decision; Decisions & exports; audit/web tests |
+| Preserve scope boundaries | Synthetic local extracts only, no automatic write-back and no external AI calls. Source bytes are checked against generation manifests. | README; pipeline/scenario/web tests; manifest verification |
+
+## Executable reports
+
+1. **Active employees in Dubai:** distinct people with eligible employment and primary Dubai assignment under explicit as-of rules.
+2. **Leavers with enabled accounts:** enabled directory accounts linked to ended employment beyond the configured grace period, without a current employment or applicable exception.
+3. **Payroll reconciliation:** distinct payroll profiles with established mismatches against authoritative same-employment Core HR observations. Unknown fields remain visible; a profile can contain both an established mismatch and unknown fields.
+
+A payroll discrepancy is **not a monetary loss estimate**. Downstream application transformations and propagation are not executed. A zero report delta applies only to these implemented definitions. Regional authority and mappings must be confirmed against the official supplied dictionary and dependency files.
+
+## Readiness boundaries
+
+“Inputs loaded” means the report can execute. “Review required” means there are unresolved cases or the definitions remain provisional. “Checks passed” is possible only with confirmed definitions, usable inputs and no unresolved cases; it still does not approve publication. Scores measure observable evidence/quality, not the probability of correctness.
+
+The standard-library engine and UI are runnable locally. Live connectors, enterprise authentication, protected enterprise audit storage and arbitrary natural-language analysis remain pilot integrations. Neither a full master-data platform nor live-system updates are part of this prototype. The submission includes synthetic issue exports and the solution note. Official test-set scoring is unavailable because the organiser pack has not arrived; the actual demo video remains to be recorded.
+
+Verified: **140 automated checks passed**, including reference parsing, review binding, executable mappings/code lists, fifth-source onboarding, dependency traversal and source preservation. Browser checks also exercised the built-in five-source demo, custom five-CSV upload with retained selections, source filtering, evidence and impact, plus the earlier source-attributed answers, score/readiness views and payroll preview from 169 to 168 discrepancies.

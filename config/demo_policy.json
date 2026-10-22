@@ -1,0 +1,562 @@
+{
+  "policy_version": "demo-2026-10-v2",
+  "description": "Provisional synthetic policies. Not official Emirates definitions or permissions.",
+  "matching": {
+    "accept_score": 0.92,
+    "review_score": 0.65
+  },
+  "sources": {
+    "core_hr": {
+      "filename": "core_hr.csv",
+      "record_grain": "one source observation per employment assignment",
+      "identifier_scope_fields": [],
+      "fields": {
+        "source_id": [
+          "employee_id"
+        ],
+        "name": [
+          "name"
+        ],
+        "email": [
+          "email"
+        ],
+        "birth_date": [
+          "birth_date"
+        ],
+        "employment_id": [
+          "employment_id"
+        ],
+        "department": [
+          "department"
+        ],
+        "job_code": [
+          "job_code"
+        ],
+        "employment_status": [
+          "employment_status",
+          "status"
+        ],
+        "location": [
+          "location"
+        ],
+        "hire_date": [
+          "hire_date"
+        ],
+        "termination_date": [
+          "termination_date"
+        ],
+        "effective_from": [
+          "effective_from"
+        ],
+        "effective_to": [
+          "effective_to"
+        ],
+        "updated_at": [
+          "updated_at"
+        ],
+        "is_primary": [
+          "is_primary"
+        ]
+      },
+      "date_formats": [
+        "%Y-%m-%d"
+      ],
+      "required": [
+        "source_id",
+        "name",
+        "department",
+        "job_code",
+        "employment_status",
+        "location",
+        "hire_date"
+      ],
+      "domains": {
+        "department": [
+          "FIN-01",
+          "OPS-01",
+          "HR-01",
+          "IT-01",
+          "ENG-01"
+        ],
+        "job_code": [
+          "ANALYST",
+          "MANAGER",
+          "ENGINEER",
+          "HRBP",
+          "SPECIALIST"
+        ],
+        "employment_status": [
+          "ACTIVE",
+          "ON_LEAVE",
+          "TERMINATED"
+        ],
+        "location": [
+          "DUBAI",
+          "ABU_DHABI",
+          "LONDON",
+          "SINGAPORE"
+        ]
+      },
+      "value_maps": {
+        "employment_status": {
+          "LEAVE": "ON_LEAVE",
+          "ON LEAVE": "ON_LEAVE",
+          "LEAVER": "TERMINATED"
+        },
+        "location": {
+          "DXB": "DUBAI",
+          "ABU DHABI": "ABU_DHABI"
+        }
+      },
+      "max_record_age_days": 730,
+      "unique_profile_fields": [
+        "employment_id",
+        "effective_from"
+      ]
+    },
+    "payroll": {
+      "filename": "payroll.csv",
+      "record_grain": "one source observation per payroll employment",
+      "identifier_scope_fields": [],
+      "fields": {
+        "source_id": [
+          "emp_id"
+        ],
+        "name": [
+          "employee_name"
+        ],
+        "email": [
+          "work_email"
+        ],
+        "birth_date": [
+          "birth_date"
+        ],
+        "employment_id": [
+          "employment_id"
+        ],
+        "department": [
+          "dept"
+        ],
+        "job_code": [
+          "position_code"
+        ],
+        "payroll_status": [
+          "payroll_status"
+        ],
+        "location": [
+          "office_location"
+        ],
+        "hire_date": [
+          "start_date"
+        ],
+        "termination_date": [
+          "end_date"
+        ],
+        "updated_at": [
+          "updated_at"
+        ]
+      },
+      "date_formats": [
+        "%d/%m/%Y",
+        "%Y-%m-%d"
+      ],
+      "required": [
+        "source_id",
+        "name",
+        "department",
+        "job_code",
+        "payroll_status",
+        "location",
+        "hire_date"
+      ],
+      "domains": {
+        "department": [
+          "FIN-01",
+          "OPS-01",
+          "HR-01",
+          "IT-01",
+          "ENG-01"
+        ],
+        "job_code": [
+          "ANALYST",
+          "MANAGER",
+          "ENGINEER",
+          "HRBP",
+          "SPECIALIST"
+        ],
+        "payroll_status": [
+          "ELIGIBLE",
+          "FINAL_SETTLEMENT",
+          "INACTIVE"
+        ],
+        "location": [
+          "DUBAI",
+          "ABU_DHABI",
+          "LONDON",
+          "SINGAPORE"
+        ]
+      },
+      "value_maps": {
+        "location": {
+          "DXB": "DUBAI",
+          "ABU DHABI": "ABU_DHABI"
+        }
+      },
+      "max_record_age_days": 730,
+      "unique_profile_fields": [
+        "employment_id",
+        "hire_date"
+      ]
+    },
+    "learning": {
+      "filename": "learning.csv",
+      "record_grain": "one learning profile per person",
+      "identifier_scope_fields": [],
+      "fields": {
+        "source_id": [
+          "person_id"
+        ],
+        "name": [
+          "full_name"
+        ],
+        "email": [
+          "email_address"
+        ],
+        "birth_date": [
+          "birth_date"
+        ],
+        "employment_id": [
+          "employment_id"
+        ],
+        "department": [
+          "department_code"
+        ],
+        "job_code": [
+          "job_code"
+        ],
+        "location": [
+          "location"
+        ],
+        "updated_at": [
+          "updated_at"
+        ]
+      },
+      "date_formats": [
+        "%Y-%m-%d",
+        "%d-%b-%Y"
+      ],
+      "required": [
+        "source_id",
+        "name",
+        "department",
+        "job_code",
+        "location"
+      ],
+      "domains": {
+        "department": [
+          "FIN-01",
+          "OPS-01",
+          "HR-01",
+          "IT-01",
+          "ENG-01"
+        ],
+        "job_code": [
+          "ANALYST",
+          "MANAGER",
+          "ENGINEER",
+          "HRBP",
+          "SPECIALIST"
+        ],
+        "location": [
+          "DUBAI",
+          "ABU_DHABI",
+          "LONDON",
+          "SINGAPORE"
+        ]
+      },
+      "value_maps": {
+        "location": {
+          "DXB": "DUBAI",
+          "ABU DHABI": "ABU_DHABI"
+        }
+      },
+      "max_record_age_days": 730,
+      "unique_profile_fields": []
+    },
+    "access_directory": {
+      "filename": "access_directory.csv",
+      "record_grain": "one source observation per directory account",
+      "identifier_scope_fields": [],
+      "fields": {
+        "source_id": [
+          "staff_id"
+        ],
+        "name": [
+          "worker_name"
+        ],
+        "email": [
+          "email"
+        ],
+        "birth_date": [
+          "birth_date"
+        ],
+        "account_status": [
+          "account_status",
+          "employee_status"
+        ],
+        "location": [
+          "work_location"
+        ],
+        "updated_at": [
+          "last_updated"
+        ],
+        "access_exempt_until": [
+          "access_exempt_until"
+        ]
+      },
+      "date_formats": [
+        "%Y-%m-%d",
+        "%d/%m/%Y"
+      ],
+      "required": [
+        "source_id",
+        "name",
+        "account_status"
+      ],
+      "domains": {
+        "account_status": [
+          "ENABLED",
+          "DISABLED"
+        ]
+      },
+      "value_maps": {
+        "account_status": {
+          "ACTIVE": "ENABLED",
+          "INACTIVE": "DISABLED"
+        },
+        "location": {
+          "DXB": "DUBAI",
+          "ABU DHABI": "ABU_DHABI"
+        }
+      },
+      "max_record_age_days": 730
+    }
+  },
+  "authority": {
+    "department": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr",
+        "payroll",
+        "learning"
+      ],
+      "allow_fallback": false
+    },
+    "job_code": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr",
+        "payroll",
+        "learning"
+      ],
+      "allow_fallback": false
+    },
+    "location": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr",
+        "payroll",
+        "learning"
+      ],
+      "allow_fallback": false
+    },
+    "hire_date": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr",
+        "payroll"
+      ],
+      "allow_fallback": false
+    },
+    "termination_date": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr",
+        "payroll"
+      ],
+      "allow_fallback": false
+    },
+    "employment_status": {
+      "sources": [
+        "core_hr"
+      ],
+      "compare_sources": [
+        "core_hr"
+      ],
+      "allow_fallback": false
+    }
+  },
+  "timing": {
+    "source_lag_days": {
+      "core_hr": 0,
+      "payroll": 3,
+      "learning": 7,
+      "access_directory": 3
+    }
+  },
+  "reports": {
+    "headcount_statuses": [
+      "ACTIVE",
+      "ON_LEAVE"
+    ],
+    "headcount_location": "DUBAI",
+    "employment_end_date_inclusive": true,
+    "access_grace_days": 3,
+    "definitions_approved": false,
+    "payroll_reconciliation_fields": [
+      "department",
+      "job_code",
+      "location",
+      "hire_date",
+      "termination_date"
+    ]
+  },
+  "dependencies": [
+    {
+      "source": "core_hr.is_primary",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.effective_from",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.effective_to",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.effective_from",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "core_hr.effective_to",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "core_hr.employment_status",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.location",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.hire_date",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.termination_date",
+      "target": "report:active_headcount_dubai"
+    },
+    {
+      "source": "core_hr.termination_date",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "core_hr.employment_status",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "core_hr.hire_date",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "access_directory.account_status",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "access_directory.access_exempt_until",
+      "target": "report:leaver_enabled_accounts"
+    },
+    {
+      "source": "core_hr.department",
+      "target": "payroll.dept"
+    },
+    {
+      "source": "core_hr.department",
+      "target": "learning.department_code"
+    },
+    {
+      "source": "core_hr.job_code",
+      "target": "payroll.position_code"
+    },
+    {
+      "source": "core_hr.job_code",
+      "target": "learning.job_code"
+    },
+    {
+      "source": "core_hr.department",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "payroll.department",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "core_hr.job_code",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "payroll.job_code",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "core_hr.location",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "payroll.location",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "core_hr.hire_date",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "payroll.hire_date",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "core_hr.termination_date",
+      "target": "report:payroll_reconciliation"
+    },
+    {
+      "source": "payroll.termination_date",
+      "target": "report:payroll_reconciliation"
+    }
+  ],
+  "priority": {
+    "critical": 95,
+    "high": 75,
+    "medium": 50,
+    "low": 20,
+    "dependency_increment": 2,
+    "max_dependency_increment": 10,
+    "report_change_points": {
+      "active_headcount_dubai": 8,
+      "leaver_enabled_accounts": 8,
+      "payroll_reconciliation": 5
+    },
+    "max_report_change_points": 15
+  }
+}

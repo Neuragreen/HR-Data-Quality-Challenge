@@ -1,0 +1,11 @@
+{
+  "synthetic_only": true,
+  "official_test_set": false,
+  "sha256": {
+    "ISSUE_LIST_GUIDE.md": "2eaf2be7e113f9e863418666e5be5f7a08edf2db8ba5ef94ce9fd6ff1c1c9bf7",
+    "SOLUTION_NOTE.md": "231241a357dbaa1b7a16565eccae6651b47aa0756b3b3d6c358d6198eaa1afb9",
+    "SOLUTION_NOTE.pdf": "4acf8556def7c9b89aba343a61c5ba27ca29d240505aa9b50355573cb6fd2f38",
+    "issues_development_synthetic.csv": "57aa5a4b28a0643e83997a4ab375933c3a8fd23267354317e76eeca49ac58b5d",
+    "issues_validation_synthetic.csv": "daf97042f209c4dfafb009795d527e81e358d82c2f3456e6c6d92b1dd5299ad9"
+  }
+}

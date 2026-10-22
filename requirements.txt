@@ -1,0 +1,2 @@
+# The active application and test suite use only Python 3.10+ standard libraries.
+# No pip installation or API key is required.

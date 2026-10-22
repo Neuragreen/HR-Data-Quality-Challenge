@@ -1,0 +1,16 @@
+.git
+.venv
+**/__pycache__
+.pytest_cache
+.env
+.env.*
+.DS_Store
+datasets
+analysis_outputs
+.ui_runs
+outputs
+evaluation
+artifacts
+ui/screenshots
+**/*.csv
+**/*.jsonl
